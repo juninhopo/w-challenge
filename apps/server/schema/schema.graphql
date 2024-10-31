@@ -12,6 +12,15 @@ type Query {
     """Returns the last n items from the list."""
     last: Int
   ): MessageConnection
+
+  """Returns a simple greeting message."""
+  hello: String
+
+  """Returns a personalized greeting message."""
+  greet(
+    """The name of the person to greet."""
+    name: String!
+  ): String
 }
 
 """A connection to a list of items."""
