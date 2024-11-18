@@ -36,7 +36,6 @@ routes.all(
 	}))
 );
 
-
 app.use(routes.routes());
 app.use(routes.allowedMethods());
 

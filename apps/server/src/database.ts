@@ -8,7 +8,9 @@ async function connectDatabase() {
 		console.log('Database connection closed.')
 	);
 
-	await mongoose.connect(config.MONGO_URI);
+  await mongoose.connect(config.MONGO_URI, {
+    dbName: config.DB_NAME,
+  });
 }
 
 export { connectDatabase };

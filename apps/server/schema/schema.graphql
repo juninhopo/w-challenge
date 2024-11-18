@@ -71,7 +71,11 @@ interface Node {
 }
 
 type Mutation {
+  """Adds a new message."""
   MessageAdd(input: MessageAddInput!): MessageAddPayload
+
+  """Creates a new user."""
+  CreateUser(input: CreateUserInput!): CreateUserPayload}
 }
 
 type MessageAddPayload {
@@ -95,4 +99,26 @@ type MessageAddedPayload {
 
 input MessageAddedInput {
   clientSubscriptionId: String
+}
+
+input CreateUserInput {
+  """The name of the user."""
+  name: String!
+
+  """The email of the user."""
+  email: String!
+
+  """Client-specific identifier for mutation tracking."""
+  clientMutationId: String
+}
+
+type CreateUserPayload {
+  """The created user."""
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
 }

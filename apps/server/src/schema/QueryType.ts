@@ -19,6 +19,10 @@ export const QueryType = new GraphQLObjectType({
         name: { type: GraphQLString },
       },
       resolve: greetUser,
-    }
+    },
+    getUser: {
+      type: GraphQLString,
+      resolve: getUser,
+    },
 	}),
 });
