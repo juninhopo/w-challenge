@@ -110,6 +110,9 @@ input CreateUserInput {
 
   """The email of the user."""
   email: String!
+  
+  """The password of the user."""
+  password: String!
 
   """Client-specific identifier for mutation tracking."""
   clientMutationId: String
