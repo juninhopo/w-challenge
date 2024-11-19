@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"@entria/graphql-mongo-helpers": "^1.1.2",
+		"bcrypt": "^5.1.1",
 		"dataloader": "^2.2.2",
 		"dotenv-safe": "^8.2.0",
 		"graphql": "^16.8.1",
@@ -24,10 +25,11 @@
 		"koa-logger": "^3.2.1",
 		"koa-router": "^12.0.1",
 		"mongoose": "^7.0.3",
-		"ws": "^8.14.2",
-    "uuid": "^8.3.2"
+		"uuid": "^8.3.2",
+		"ws": "^8.14.2"
 	},
 	"devDependencies": {
+		"@types/bcrypt": "^5.0.2",
 		"@types/kcors": "^2.2.8",
 		"@types/koa": "^2.13.12",
 		"@types/koa-bodyparser": "^4.3.10",

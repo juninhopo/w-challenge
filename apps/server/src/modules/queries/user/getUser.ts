@@ -1,5 +1,4 @@
 import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql'
-import mongoose from 'mongoose'
 import { User } from '../../../models/User'
 
 const UserType = new GraphQLObjectType({
