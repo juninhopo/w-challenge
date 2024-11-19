@@ -110,6 +110,9 @@ input CreateUserInput {
 
   """The email of the user."""
   email: String!
+
+  """The username of the user."""
+  username: String!
   
   """The password of the user."""
   password: String!
@@ -126,6 +129,7 @@ type CreateUserPayload {
 type User {
   id: ID!
   name: String!
+  username: String!
   email: String!
   status: String!
 }

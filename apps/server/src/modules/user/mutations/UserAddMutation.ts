@@ -7,6 +7,7 @@ import bcrypt from 'bcrypt';
 export type UserAddInput = {
   name: string;
   email: string;
+  username: string;
   password: string;
 }
 
@@ -19,6 +20,9 @@ const mutation = mutationWithClientMutationId({
     email: {
       type: new GraphQLNonNull(GraphQLString),
     },
+    username: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
     password: {
       type: new GraphQLNonNull(GraphQLString),
     }
@@ -28,6 +32,7 @@ const mutation = mutationWithClientMutationId({
     const user = await new User({
       name: args.name,
       email: args.email,
+      username: args.username,
     }).save();
 
     console.log(user)
@@ -44,6 +49,7 @@ const mutation = mutationWithClientMutationId({
     return {
       user: user._id.toString(),
       name: user.name,
+      username: user.username,
       status: user.status,
       email: user.email,
     };
@@ -51,6 +57,8 @@ const mutation = mutationWithClientMutationId({
   outputFields: {
     name: { type: GraphQLString },
     email: { type: GraphQLString },
+    username: { type: GraphQLString },
+    status: { type: GraphQLString },
   },
 })
 

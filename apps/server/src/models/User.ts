@@ -19,6 +19,12 @@ const schema = new mongoose.Schema<IUser>(
       unique: true,
       description: "The email of the user",
     },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      description: "The username of the user",
+    },
     status: {
       type: String,
       enum: ["ACTIVE", "INACTIVE"],
@@ -36,6 +42,7 @@ export type IUser = {
   _id: string;
   name: string;
   email: string;
+  username: string;
   status: string;
   createdAt: Date;
   updatedAt: Date;
