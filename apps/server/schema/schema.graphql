@@ -79,6 +79,9 @@ type Mutation {
 
   """Creates a new user."""
   CreateUser(input: CreateUserInput!): CreateUserPayload}
+
+  """Login a user and return a token."""
+  login(input: LoginInput!): LoginPayload
 }
 
 type MessageAddPayload {
@@ -133,3 +136,29 @@ type User {
   email: String!
   status: String!
 }
+
+input LoginInput {
+  """The username of the user."""
+  username: String!
+
+  """The password of the user."""
+  password: String!
+}
+
+type LoginPayload {
+  """The authentication token."""
+  token: String
+
+  """The authenticated user."""
+  user: User
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+type LoginPayload {
+  token: String
+  user: User
+} 
