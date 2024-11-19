@@ -1,6 +1,7 @@
 {
 	"private": true,
 	"name": "woovi-playground",
+	"packageManager": "pnpm@7.0.0",
 	"scripts": {
 		"build": "turbo run build",
 		"config:local": "turbo run config:local",

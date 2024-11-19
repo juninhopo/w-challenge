@@ -21,6 +21,9 @@ type Query {
     """The name of the person to greet."""
     name: String!
   ): String
+
+  """Fetches a user by email."""
+  getUser(id: String!): User
 }
 
 """A connection to a list of items."""

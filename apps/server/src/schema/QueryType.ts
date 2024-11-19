@@ -2,6 +2,7 @@ import { GraphQLObjectType, GraphQLString } from 'graphql';
 
 import { messageConnectionField } from '../modules/message/messageFields';
 import greetUser from '../modules/queries/greetUser';
+import { getUser } from '../modules/queries/user/getUser';
 
 export const QueryType = new GraphQLObjectType({
 	name: 'Query',
@@ -20,9 +21,6 @@ export const QueryType = new GraphQLObjectType({
       },
       resolve: greetUser,
     },
-    getUser: {
-      type: GraphQLString,
-      resolve: getUser,
-    },
+    getUser,
 	}),
 });
