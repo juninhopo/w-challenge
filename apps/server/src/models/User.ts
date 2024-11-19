@@ -6,6 +6,7 @@ const schema = new mongoose.Schema<IUser>(
     _id: {
       type: String,
       default: uuidv4,
+      description: "The ID of the user",
     },
     name: {
       type: String,
@@ -18,6 +19,12 @@ const schema = new mongoose.Schema<IUser>(
       unique: true,
       description: "The email of the user",
     },
+    status: {
+      type: String,
+      enum: ["ACTIVE", "INACTIVE"],
+      default: "ACTIVE",
+      description: "The status of the user",
+    }
   },
   {
     collection: "User",
@@ -29,6 +36,7 @@ export type IUser = {
   _id: string;
   name: string;
   email: string;
+  status: string;
   createdAt: Date;
   updatedAt: Date;
 } & Document;

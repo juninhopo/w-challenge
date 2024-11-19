@@ -26,6 +26,7 @@ const mutation = mutationWithClientMutationId({
     return {
       user: user._id.toString(),
       name: user.name,
+      status: user.status,
       email: user.email,
     };
   },
