@@ -1,4 +1,4 @@
-import { UserLoginMutation } from "./LoginMutation";
+import { UserLoginMutation } from "./login/LoginMutation";
 import { CreateUserMutation } from "./UserAddMutation";
 
 export const userMutations = {

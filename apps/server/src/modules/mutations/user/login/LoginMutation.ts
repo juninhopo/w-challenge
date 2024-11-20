@@ -1,9 +1,10 @@
 import { GraphQLNonNull, GraphQLString } from 'graphql'
 import { mutationWithClientMutationId } from 'graphql-relay'
-import { UserType } from '../../queries/user/getUser'
-import { User } from '../../../models/User'
-import { UserPass } from '../../../models/UserPass'
 import bcrypt from 'bcrypt';
+import { UserType } from '../../../queries/user/getUser';
+import { UserPass } from '../../../../models/UserPass';
+import { User } from '../../../../models/User';
+import loginUserValidator from './validator';
 
 const jwt = require('jsonwebtoken')
 
@@ -23,7 +24,8 @@ const mutation = mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async (args: UserLoginInput) => {
-    const { email, password } = args;
+    const { email, password } = loginUserValidator(args)
+
     const user = await User.findOne({ email });
 
     console.log({ user });
@@ -44,6 +46,7 @@ const mutation = mutationWithClientMutationId({
       throw new Error('Invalid password');
     }
 
+    // eslint-disable-next-line turbo/no-undeclared-env-vars
     const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY_JWT, { expiresIn: '24h' });
 
     return {
