@@ -1,5 +1,6 @@
 import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql'
-import { User } from '../../../models/User'
+import { User } from '../../../../models/User'
+import getUserValidator from './validator'
 
 export const UserType = new GraphQLObjectType({
   name: 'User',
@@ -18,9 +19,11 @@ export const getUser = {
     id: { type: new GraphQLNonNull(GraphQLString) },
   },
   resolve: async (_: any, args: { id: string }) => {
-    console.log(`Searching for user with ID: ${args.id}`)
+    const { id } = getUserValidator(args)
 
-    const user = await User.findById(args.id)
+    console.log(`Searching for user with ID: ${id}`)
+
+    const user = await User.findById(id)
     console.log({ user })
 
     if (!user) {

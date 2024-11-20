@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLString } from 'graphql'
 import { mutationWithClientMutationId } from 'graphql-relay'
 import bcrypt from 'bcrypt';
-import { UserType } from '../../../queries/user/getUser';
+import { UserType } from '../../../queries/user/get/getUser';
 import { UserPass } from '../../../../models/UserPass';
 import { User } from '../../../../models/User';
 import loginUserValidator from './validator';
