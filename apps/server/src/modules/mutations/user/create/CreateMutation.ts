@@ -1,8 +1,9 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql';
 import { mutationWithClientMutationId } from 'graphql-relay';
-import { User } from '../../../models/User';
-import { UserPass } from '../../../models/UserPass';
+import { User } from '../../../../models/User';
+import { UserPass } from '../../../../models/UserPass';
 import bcrypt from 'bcrypt';
+import createUserValidator from './validator';
 
 export type UserAddInput = {
   name: string;
@@ -28,17 +29,19 @@ const mutation = mutationWithClientMutationId({
     }
   },
   mutateAndGetPayload: async (args: UserAddInput) => {
+    const { name, email, username, password } = createUserValidator(args);
+
     // Cria o usuário
     const user = await new User({
-      name: args.name,
-      email: args.email,
-      username: args.username,
+      name,
+      email,
+      username,
     }).save();
 
     console.log(user)
 
     // Faz o hash da senha
-    const hashedPassword = await bcrypt.hash(args.password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Armazena a senha hasheada na tabela UserPass
     const userPass = await new UserPass({

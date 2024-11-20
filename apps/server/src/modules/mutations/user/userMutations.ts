@@ -1,7 +1,7 @@
-import { UserLoginMutation } from "./login/LoginMutation";
-import { CreateUserMutation } from "./UserAddMutation";
+import { LoginUserMutation } from "./login/LoginMutation";
+import { CreateUserMutation } from "./create/CreateMutation";
 
 export const userMutations = {
 	CreateUser: CreateUserMutation,
-	LoginUser: UserLoginMutation,
+	LoginUser: LoginUserMutation,
 };

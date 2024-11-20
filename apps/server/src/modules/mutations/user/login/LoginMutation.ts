@@ -60,6 +60,6 @@ const mutation = mutationWithClientMutationId({
   }
 })
 
-export const UserLoginMutation = {
+export const LoginUserMutation = {
   ...mutation,
 }
