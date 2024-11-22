@@ -25,4 +25,4 @@ export type IUserPass = {
   updatedAt: Date;
 } & Document
 
-export const UserPass: Model<IUserPass> = mongoose.model("UserPass", userPassSchema); 
+export const UserPassModel: Model<IUserPass> = mongoose.model("UserPass", userPassSchema); 

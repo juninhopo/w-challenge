@@ -18,7 +18,9 @@ const createUserValidator = (params: any) => {
       error,
     })
 
-    throw new Error('Validation error on create user')
+    return {
+      error: 'Validation error on create user',
+    }
   }
 
   return value

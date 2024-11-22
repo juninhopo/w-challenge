@@ -1,16 +1,22 @@
-const loaders: Record<string, () => unknown> = {};
+export interface DataLoaders {
+  UserLoader: ReturnType<typeof import('../user/UserLoader').getLoader>;
+}
 
-const registerLoader = (key: string, getLoader: () => unknown) => {
-	loaders[key] = getLoader;
+const loaders: {
+  [Name in keyof DataLoaders]: () => DataLoaders[Name];
+} = {} as any;
+
+const registerLoader = <Name extends keyof DataLoaders>(key: Name, getLoader: () => DataLoaders[Name]) => {
+  loaders[key] = getLoader as any;
 };
 
-const getDataloaders = (): Record<string, () => unknown> =>
-	Object.keys(loaders).reduce(
-		(prev, loaderKey) => ({
-			...prev,
-			[loaderKey]: loaders[loaderKey](),
-		}),
-		{}
-	);
+const getDataloaders = (): DataLoaders =>
+  (Object.keys(loaders) as (keyof DataLoaders)[]).reduce(
+    (prev, loaderKey) => ({
+      ...prev,
+      [loaderKey]: loaders[loaderKey](),
+    }),
+    {},
+  ) as any;
 
 export { registerLoader, getDataloaders };

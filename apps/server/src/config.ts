@@ -17,6 +17,9 @@ const config = {
 	PORT: ENV.PORT ?? 4000,
 	MONGO_URI: ENV.MONGO_URI ?? '',
 	DB_NAME: 'w-challenge',
+	SECRET_KEY_JWT: ENV.SECRET_KEY_JWT ?? '',
+	W_CHALLENGE: 'w-challenge',
+	NODE_ENV: 'development',
 };
 
 export { config };

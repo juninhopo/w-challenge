@@ -15,8 +15,9 @@ const loginUserValidator = (params: any) => {
       message: 'Validation error',
       error,
     })
-
-    throw new Error('Validation error on login user')
+    return {
+      error: 'Validation error on login user',
+    }
   }
 
   return value

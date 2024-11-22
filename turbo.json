@@ -12,8 +12,6 @@
 		},
 		"lint": {},
 		"relay": {},
-		"schema": {},
-		"env": {
-		}
+		"schema": {}
 	}
 }

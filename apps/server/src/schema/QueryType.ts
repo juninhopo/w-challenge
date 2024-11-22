@@ -1,8 +1,7 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
-
 import { messageConnectionField } from '../modules/message/messageFields';
 import greetUser from '../modules/queries/greetUser';
-import { getUser } from '../modules/queries/user/getUser';
+import { getUser } from '../modules/queries/user/get/getUser';
 
 export const QueryType = new GraphQLObjectType({
 	name: 'Query',

@@ -48,4 +48,4 @@ export type IUser = {
   updatedAt: Date;
 } & Document;
 
-export const User: Model<IUser> = mongoose.model("User", schema);
+export const UserModel: Model<IUser> = mongoose.model("User", schema);
